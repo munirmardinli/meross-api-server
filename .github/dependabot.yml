@@ -1,0 +1,24 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # npm dependencies updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "munirmardinli"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "typescript"
+    ignore:
+      - dependency-name: "typescript"
+        update-types: "version-update:semver-major"
+      - dependency-name: "@types/*"

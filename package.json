@@ -1,0 +1,74 @@
+{
+	"name": "meross-api-server",
+	"version": "1.0.1",
+	"private": true,
+	"type": "module",
+	"description": "Munir Mardinli’s Meross API Server – A TypeScript-powered Express API to control and manage Meross smart home devices via the Meross Cloud. Built for seamless IoT automation and smart control integration.",
+	"homepage": "https://munirmardinli.github.io/meross-api-server",
+	"bugs": {
+		"url": "https://github.com/munirmardinli/meross-api-server/issues",
+		"email": "Munir@Mardinli.de"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/munirmardinli/meross-api-server.git",
+		"directory": "Munir Mardinli DevOps Tools",
+		"homepage": "https://github.com/munirmardinli/meross-api-server#readme"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Munir Mardinli",
+		"email": "Munir@Mardinli.de",
+		"url": "https://linktr.ee/munirmardinli"
+	},
+	"keywords": [
+		"Munir Mardinli",
+		"meross api",
+		"smart home automation",
+		"meross device control",
+		"iot api server",
+		"express iot backend",
+		"typescript meross cloud",
+		"smart switch control",
+		"home automation api",
+		"devops iot tools",
+		"cloud-based device manager",
+		"meross cloud sdk",
+		"open source smart home",
+		"meross toggle api",
+		"iot rest api"
+	],
+	"funding": {
+		"type": "individual",
+		"url": "https://linktr.ee/munirmardinli"
+	},
+	"contributors": [
+		{
+			"name": "Munir Mardinli",
+			"email": "Munir@Mardinli.de",
+			"url": "https://linktr.ee/munirmardinli"
+		}
+	],
+	"scripts": {
+		"build": "tsc",
+		"docs": "npx typedoc",
+		"dev": "tsx watch src/index.ts",
+		"start": "node dist/src/index.js"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.1",
+		"@types/node": "^20.10.1",
+		"ts-node": "^10.9.2",
+		"tsx": "^4.6.1",
+		"typedoc": "^0.28.5",
+		"typedoc-plugin-extra-footer": "^1.0.4",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"axios": "^1.9.0",
+		"crypto": "^1.0.1",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"meross-cloud": "^3.1.2"
+	}
+}

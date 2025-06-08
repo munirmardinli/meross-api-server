@@ -1,0 +1,66 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip-actions]')"
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Cache node_modules
+        if: steps.cache-npm-cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache TypeDoc output
+        uses: actions/cache@v3
+        with:
+          path: |
+            docs
+            .cache/typedoc
+          key: ${{ runner.os }}-typedoc-${{ hashFiles('typedoc.json') }}-${{ hashFiles('src/**/*.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-typedoc-${{ hashFiles('typedoc.json') }}-
+            ${{ runner.os }}-typedoc-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate documentation
+        run: |
+          npm run build
+          npx typedoc
+          echo "meross-api-server" > docs/CNAME
+          touch docs/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          force_orphan: true
+          keep_files: false

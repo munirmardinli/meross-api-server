@@ -1,0 +1,41 @@
+'type: bug':
+  - 'src/**/*.bugfix.ts'
+  - 'src/**/*.fix.ts'
+  - '**/bugfix/**'
+  - '**/fix/**'
+
+'type: feature':
+  - 'src/**/*.feature.ts'
+  - 'src/**/*.feat.ts'
+  - '**/feature/**'
+  - '**/feat/**'
+
+'type: documentation':
+  - 'docs/**'
+  - 'typedoc.json'
+  - '**/*.md'
+
+'type: dependencies':
+  - 'package.json'
+  - 'package-lock.json'
+
+'area: security':
+  - '**/*.security.ts'
+  - '.github/workflows/codeql.yml'
+  - '**/security/**'
+
+'workflow: documentation':
+  - '.github/workflows/docs.yml'
+  - 'typedoc.json'
+
+'priority: high':
+  - 'src/**/*.critical.*'
+  - '**/critical/**'
+
+'ci: github-actions':
+  - '.github/workflows/**'
+
+'tests':
+  - '**/*.spec.ts'
+  - '**/*.test.ts'
+  - '**/__tests__/**'
