@@ -18,7 +18,7 @@ import express, {
 	type Request,
 	type Response,
 } from "express";
-import MerossCloud, { DeviceDefinition, MerossCloudDevice } from "meross-cloud";
+import MerossCloud, {type DeviceDefinition, MerossCloudDevice } from "meross-cloud";
 import axios from "axios";
 import crypto from "crypto";
 import "dotenv/config";
